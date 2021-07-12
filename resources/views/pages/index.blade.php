@@ -10,8 +10,13 @@
             <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
                 <div>
                     <ul class="navbar-nav">
-
-                        <li><a href=""></a></li>
+                    @foreach($categories as $category)
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href=""> 
+                                {{$category['title']}} 
+                            </a>
+                        </li>
+                    @endforeach
                     </ul>
                 </div>
 
@@ -35,6 +40,13 @@
             Category
         </button>
         <ul class="dropdown-menu">
+        @foreach($categories as $category)
+            <li class="nav-item">
+                <a class="nav-link active" href=""> 
+                    {{$category['title']}} 
+                </a>
+            </li>
+        @endforeach
         </ul>
         <input type="text" class="form-control" placeholder="Search ads">
         <button type="button" class="btn btn-outline-secondary">Search</button>
@@ -57,7 +69,7 @@
                     <img class="newest-ads__img" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
                     <div class="fs-5 d-inline-block mx-3">
                         <p>Author: {{$ad->user['name']}} </p>
-                        <p href="{{ route('getAdsByCategory', $ad->category['id'])}}">
+                        <p href=" {{ route('getAdsByCategory', $ad->category['id']) }} ">
                             Category: <a href="#"> {{$ad->category['title']}} </a> 
                         </p>
                     </div>
