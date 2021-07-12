@@ -7,12 +7,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="fs-3 navbar-brand" href="/">@yield('title')</a>
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button> -->
             <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
                 <div>
                     <ul class="navbar-nav">
+
+                        <li><a href=""></a></li>
                     </ul>
                 </div>
 
@@ -54,8 +53,16 @@
         <div class="h-25">
             <h3>{{ $ad['title'] }}</h3>
             <div>
-                <img class="d-inline newest-ads__img" src="/img/{{ $ad['image'] }}" alt="#">
-                <p class="d-inline mx-3">{{ $ad['text'] }}</p>
+                <div>
+                    <img class="newest-ads__img" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
+                    <div class="fs-5 d-inline-block mx-3">
+                        <p>Author: {{$ad->user['name']}} </p>
+                        <p href="{{ route('getAdsByCategory', $ad->category['id'])}}">
+                            Category: <a href="#"> {{$ad->category['title']}} </a> 
+                        </p>
+                    </div>
+                </div>
+                <p class="mt-2">{{ $ad['text'] }}</p>
             </div>
             <hr>
         </div>

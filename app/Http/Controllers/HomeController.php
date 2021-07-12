@@ -13,4 +13,8 @@ class HomeController extends Controller
             'ads' => $ads
         ]);
     }
+
+    public function getAdsByCategory() {
+        
+    }
 }
