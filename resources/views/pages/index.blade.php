@@ -43,3 +43,25 @@
 
 </header>
 @endsection
+
+@section('newest-ads')
+
+<div class="mt-4 mx-4">
+    <h2>Newest Ads</h2>
+
+    <div class="mt-4">
+        @foreach($ads as $ad)
+        <div class="h-25">
+            <h3>{{ $ad['title'] }}</h3>
+            <div>
+                <img class="d-inline newest-ads__img" src="/img/{{ $ad['image'] }}" alt="#">
+                <p class="d-inline mx-3">{{ $ad['text'] }}</p>
+            </div>
+            <hr>
+        </div>
+        @endforeach
+    </div>
+
+</div>
+
+@endsection
