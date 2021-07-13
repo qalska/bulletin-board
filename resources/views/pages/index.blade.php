@@ -1,12 +1,14 @@
 @extends('layouts.main-layout')
 
-@section('title', 'Bulletin Board')
+@section('title', isset($category) ? $category['title'] : 'Bulletin Board')
+
+@section('ads_title', isset($category) ? 'Newest ads in a category ' . $category['title'] : 'Newest ads')
 
 @section('header')
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="fs-3 navbar-brand" href="/">@yield('title')</a>
+            <a class="fs-3 navbar-brand" href="/">Bulletin Board</a>
             <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
                 <div>
                     <ul class="navbar-nav">
@@ -56,27 +58,32 @@
 @section('newest-ads')
 
 <div class="mt-4 mx-4">
-    <h2>Newest Ads</h2>
+    <h2>@yield("ads_title")</h2>
 
     <div class="mt-4">
-        @foreach($ads as $ad)
-        <div class="h-25">
+        @forelse($ads as $ad)
+        <div>
             <h3>{{ $ad['title'] }}</h3>
             <div>
-                <div>
+                <div class="h-100">
                     <img class="newest-ads__img" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
-                    <div class="fs-5 d-inline-block mx-3">
+                    <div class="newest-ads__text h-100 fs-6 d-inline-block mx-3">
                         <p>Author: {{$ad->user['name']}} </p>
                         <p>
                             Category: <a href="/category/{{ $ad->category['title'] }}"> {{$ad->category['title']}} </a> 
+                        </p>
+                        <p>
+                            Price: {{ $ad['price'] }} RUB
                         </p>
                     </div>
                 </div>
                 <p class="mt-2">{{ $ad['text'] }}</p>
             </div>
             <hr>
+            @empty
+            <p class="fs-3 fw-bold font-monospace text-danger">Ads not found!</p>
         </div>
-        @endforeach
+        @endforelse
     </div>
 
 </div>

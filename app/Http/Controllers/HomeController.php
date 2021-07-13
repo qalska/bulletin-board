@@ -17,7 +17,13 @@ class HomeController extends Controller
         ]);
     }
 
-    public function getAdsByCategory() {
-        
+    public function getAdsByCategory($title) {
+        $category = Category::where('title', $title)->first();
+        $categories = Category::all();
+        return view('pages.index', [
+            'ads' => $category->ads,
+            'categories' => $categories,
+            'category' => $category
+        ]);
     }
 }
