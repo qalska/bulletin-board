@@ -12,7 +12,7 @@
                     <ul class="navbar-nav">
                     @foreach($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href=""> 
+                            <a class="nav-link active" aria-current="page" href="/category/{{ $category['title'] }}"> 
                                 {{$category['title']}} 
                             </a>
                         </li>
@@ -42,9 +42,7 @@
         <ul class="dropdown-menu">
         @foreach($categories as $category)
             <li class="nav-item">
-                <a class="nav-link active" href=""> 
-                    {{$category['title']}} 
-                </a>
+                {{$category['title']}} 
             </li>
         @endforeach
         </ul>
@@ -69,8 +67,8 @@
                     <img class="newest-ads__img" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
                     <div class="fs-5 d-inline-block mx-3">
                         <p>Author: {{$ad->user['name']}} </p>
-                        <p href=" {{ route('getAdsByCategory', $ad->category['id']) }} ">
-                            Category: <a href="#"> {{$ad->category['title']}} </a> 
+                        <p>
+                            Category: <a href="/category/{{ $ad->category['title'] }}"> {{$ad->category['title']}} </a> 
                         </p>
                     </div>
                 </div>

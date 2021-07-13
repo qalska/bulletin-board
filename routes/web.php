@@ -14,4 +14,4 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/category/{category_id}', [HomeController::class, 'getAdsByCategory'])->name('getAdsByCategory');
+Route::get('/category/{title}', [HomeController::class, 'getAdsByCategory'])->name('getAdsByCategory');
