@@ -17,6 +17,7 @@
                     You are logged in!
                 </div>
             </div>
+            <a class="link mx-2" href="/">Go to main page →</a>
         </div>
     </div>
 </div>

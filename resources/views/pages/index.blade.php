@@ -5,7 +5,6 @@
 @section('ads_title', isset($category) ? 'Newest ads in a category ' . $category['title'] : 'Newest ads')
 
 @section('header')
-
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
@@ -76,7 +75,6 @@
     </div>
 
 </header>
-
 @endsection
 
 @section('content')
