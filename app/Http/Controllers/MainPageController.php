@@ -9,7 +9,28 @@ use App\Category;
 class MainPageController extends Controller
 {
     public function index() {
-        $ads = Ad::orderBy('id', 'DESC')->get();;
+        $ads = Ad::orderBy('id', 'DESC')->get();
+        $categories = Category::all();
+
+        return view('pages.index', [
+            'ads' => $ads,
+            'categories' => $categories
+        ]);
+    }
+
+    public function search(Request $request) {
+        $search = $request->input('search');
+        $category_id = $request->input('category_id');
+        
+        if ($category_id == '0') {
+            $ads = Ad::where('title', 'LIKE', "%{$search}%")->orderBy('id', 'DESC')->get();
+        } else {
+            $ads = Ad::where([
+                ['category_id', 'LIKE', "$category_id"],
+                ['title', 'LIKE', "%{$search}%"]
+                ])->orderBy('id', 'DESC')->get();
+        }
+        
         $categories = Category::all();
         return view('pages.index', [
             'ads' => $ads,
@@ -20,6 +41,7 @@ class MainPageController extends Controller
     public function getAdsByCategory($title) {
         $category = Category::where('title', $title)->first();
         $categories = Category::all();
+
         return view('pages.index', [
             'ads' => $category->ads,
             'categories' => $categories,

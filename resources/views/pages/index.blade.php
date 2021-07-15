@@ -39,7 +39,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">My ads</a>
+                                <a class="dropdown-item" href="/home">My profile</a>
                                 <a class="dropdown-item" href="#">Place an ad</a>
                                 <hr>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -59,20 +59,19 @@
         </div>
     </nav>
 
-    <div class="input-group mt-4 mx-auto w-75">
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-            Category
-        </button>
-        <ul class="dropdown-menu">
-        @foreach($categories as $category)
-            <li class="nav-item">
-                {{$category['title']}} 
-            </li>
-        @endforeach
-        </ul>
-        <input type="text" class="form-control" placeholder="Search ads">
-        <button type="button" class="btn btn-outline-secondary">Search</button>
-    </div>
+    <form action=" {{ route('search') }} " method="get">
+        <div class="input-group mt-4 mx-auto w-75">
+            <select class="form-select col-2" name="category_id" aria-label="Default select example">
+                <option value="0" selected>Category</option>
+
+                @foreach($categories as $category)
+                <option value="{{ $category['id'] }}">{{ $category['title'] }}</option>
+                @endforeach
+            </select>
+            <input type="text" class="form-control" name="search" placeholder="Search ads">
+            <button type="submit" class="btn btn-outline-secondary">Search</button>
+        </div>
+    </form>
 
 </header>
 @endsection

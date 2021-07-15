@@ -15,6 +15,7 @@ use App\Http\Controllers\AppLayoutController;
 */
 
 Route::get('/', [MainPageController::class, 'index'])->name('mainpage');
+Route::get('/search', [MainPageController::class, 'search'])->name('search');
 Route::get('/category/{title}', [MainPageController::class, 'getAdsByCategory'])->name('getAdsByCategory');
 
 Auth::routes();
