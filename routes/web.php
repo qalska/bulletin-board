@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\AppLayoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/category/{title}', [HomeController::class, 'getAdsByCategory'])->name('getAdsByCategory');
+Route::get('/', [MainPageController::class, 'index'])->name('mainpage');
+Route::get('/category/{title}', [MainPageController::class, 'getAdsByCategory'])->name('getAdsByCategory');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

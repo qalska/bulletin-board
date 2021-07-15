@@ -5,6 +5,7 @@
 @section('ads_title', isset($category) ? 'Newest ads in a category ' . $category['title'] : 'Newest ads')
 
 @section('header')
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
@@ -22,17 +23,39 @@
                     </ul>
                 </div>
 
-                <div class="dropdown me-5">
-                    <div class= "btn-group dropstart">
-                        <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                            Name
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                            <li><a class="dropdown-item" href="#">My ads</a></li>
-                            <li><a class="dropdown-item" href="#">Place an ad</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <ul class="navbar-nav ml-auto">
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link active dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">My ads</a>
+                                <a class="dropdown-item" href="#">Place an ad</a>
+                                <hr>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
             </div>
         </div>
     </nav>
@@ -53,10 +76,10 @@
     </div>
 
 </header>
+
 @endsection
 
-@section('newest-ads')
-
+@section('content')
 <div class="mt-4 mx-4">
     <h2>@yield("ads_title")</h2>
 

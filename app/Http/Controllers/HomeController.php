@@ -3,27 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Ad;
-use App\Category;
 
 class HomeController extends Controller
 {
-    public function index() {
-        $ads = Ad::orderBy('id', 'DESC')->get();;
-        $categories = Category::all();
-        return view('pages.index', [
-            'ads' => $ads,
-            'categories' => $categories
-        ]);
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function getAdsByCategory($title) {
-        $category = Category::where('title', $title)->first();
-        $categories = Category::all();
-        return view('pages.index', [
-            'ads' => $category->ads,
-            'categories' => $categories,
-            'category' => $category
-        ]);
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
     }
 }
