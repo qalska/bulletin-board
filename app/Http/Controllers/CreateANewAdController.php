@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Ad;
@@ -16,20 +18,23 @@ class CreateANewAdController extends Controller
         ]);
     }
 
-    public function CreateANewAd(Request $request) {
+    public function store(Request $request) {
         $ad = new Ad();
-        $ad['title'] = $request['title'];
-        $ad['category_id'] = $request['category_id'];
-        $ad['price'] = $request['price'];
-        $ad['text'] = $request['text'];
+        $ad->title = $request->input('title');
+        $ad->category_id = $request->input('category_id');
+        $ad->price = $request->input('price');
+        $ad->text = $request->input('text');
+        $ad->user_id = Auth::user()->id;
 
-        if( $request[file('image')] ){
-            $path = Storage::putfile('public', $request[file('image')]);
+        if ( $request->file('image') ) {
+            $path = Storage::putfile('public', $request->file('image') );
             $url = Storage::url($path);
-            $ad['image'] = $request[$url];
+            $ad->image = $url;
+        } else {
+            $ad->image = 'nophoto.jpg';
         }
 
         $ad->save();
-        return view('pages.create-a-new-ad');
+        return redirect()->route('home');
     }
 }

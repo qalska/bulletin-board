@@ -21,4 +21,5 @@ Route::get('/category/{title}', [MainPageController::class, 'getAdsByCategory'])
 Auth::routes();
 
 Route::get('/home', 'HomeController@getAdsByUser')->name('home');
-Route::post('/ad/create', [CreateANewAdController::class, ['index', 'CreateANewAd']]);
+Route::get('/ad/create', [CreateANewAdController::class, 'index'])->name('create');
+Route::post('/home', [CreateANewAdController::class, 'store'])->name('store');

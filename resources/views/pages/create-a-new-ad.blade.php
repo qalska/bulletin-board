@@ -4,7 +4,7 @@
 <div class="d-flex flex-column align-items-center">
     <h4 class="mb-4">Create a new ad</h4>
 
-    <form class="col-5" action="" method="POST" enctype="multipart/form-data">
+    <form class="col-5" action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input class="form-control" type="text" name="title" placeholder="Title" required>
 
