@@ -26,7 +26,7 @@ class MainPageController extends Controller
             $ads = Ad::where('title', 'LIKE', "%{$search}%")->orderBy('id', 'DESC')->get();
         } else {
             $ads = Ad::where([
-                ['category_id', 'LIKE', "$category_id"],
+                ['category_id', '=', "$category_id"],
                 ['title', 'LIKE', "%{$search}%"]
                 ])->orderBy('id', 'DESC')->get();
         }

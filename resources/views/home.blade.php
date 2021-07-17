@@ -1,11 +1,10 @@
-@extends('layouts.main-layout')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div>
+        <!-- <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,7 +17,37 @@
                 </div>
             </div>
             <a class="link mx-2" href="/">Go to main page →</a>
+        </div> -->
+
+        <h4>My ads</h4>
+
+        <div class="mt-4">
+            @forelse($ads as $ad)
+            <div>
+                <h3>{{ $ad['title'] }}</h3>
+                <div>
+                    <div class="h-100">
+                        <img class="newest-ads__img" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
+                        <div class="newest-ads__text h-100 fs-6 d-inline-block mx-3">
+                            <p>Author: {{$ad->user['name']}} </p>
+                            <p>
+                                Category: <a href="/category/{{ $ad->category['title'] }}"> {{$ad->category['title']}} </a> 
+                            </p>
+                            <p>
+                                Price: {{ $ad['price'] }} RUB
+                            </p>
+                        </div>
+                    </div>
+                    <p class="mt-2">{{ $ad['text'] }}</p>
+                </div>
+                <hr>
+                @empty
+                <div class="d-flex flex-column align-items-center">
+                    <p class="fs-2 fw-bold font-monospace">You have no ads yet</p>
+                    <a class="btn btn-primary w-25" href="/create-new-ad">Create a new ad</a>
+                </div>
+            </div>
+            @endforelse
         </div>
-    </div>
 </div>
 @endsection

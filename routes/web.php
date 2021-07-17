@@ -20,4 +20,4 @@ Route::get('/category/{title}', [MainPageController::class, 'getAdsByCategory'])
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@getAdsByUser')->name('home');
