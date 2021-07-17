@@ -56,7 +56,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/home">My profile</a>
-                                    <a class="dropdown-item" href="/create-new-ad">Create a new ad</a>
+                                    <a class="dropdown-item" href="/ad/create">Create a new ad</a>
                                     <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

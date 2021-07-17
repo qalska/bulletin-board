@@ -44,7 +44,7 @@
                 @empty
                 <div class="d-flex flex-column align-items-center">
                     <p class="fs-2 fw-bold font-monospace">You have no ads yet</p>
-                    <a class="btn btn-primary w-25" href="/create-new-ad">Create a new ad</a>
+                    <a class="btn btn-primary w-25" href="/ad/create">Create a new ad</a>
                 </div>
             </div>
             @endforelse

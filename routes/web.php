@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainPageController;
-use App\Http\Controllers\AppLayoutController;
+use App\Http\Controllers\CreateANewAdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +21,4 @@ Route::get('/category/{title}', [MainPageController::class, 'getAdsByCategory'])
 Auth::routes();
 
 Route::get('/home', 'HomeController@getAdsByUser')->name('home');
+Route::post('/ad/create', [CreateANewAdController::class, ['index', 'CreateANewAd']]);
