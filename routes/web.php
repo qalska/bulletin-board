@@ -17,16 +17,21 @@ use App\Http\Controllers\EditAnAdController;
 |
 */
 
-Route::get('/', [MainPageController::class, 'index'])->name('mainpage');
-Route::get('/search', [MainPageController::class, 'search'])->name('search');
-Route::get('/category/{title}', [MainPageController::class, 'getAdsByCategory'])->name('getAdsByCategory');
+Route::get('/', 'MainPageController@index')->name('mainpage');
+Route::get('/search', 'MainPageController@search')->name('search');
+Route::get('/category/{title}', 'MainPageController@getAdsByCategory')->name('getAdsByCategory');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@getAdsByUser')->name('home');
-Route::get('/ad/{id}', [AdController::class, 'index'])->name('ad');
-Route::get('/ad/create', [CreateANewAdController::class, 'index'])->name('create');
-Route::post('/home', [CreateANewAdController::class, 'store'])->name('store');
-Route::get('/ad/delete/{id}', [DeleteAnAdController::class, 'deleteAnAd']);
-Route::get('/ad/edit/{id}', [EditAnAdController::class, 'index'])->name('editAnAd');
-Route::post('/ad/{id}', [EditAnAdController::class, 'edit'])->name('edit');
+
+
+Route::get('/ad/create', 'CreateANewAdController@index')->name('create');
+Route::post('/home', 'CreateANewAdController@store')->name('store');
+
+Route::get('/ad/{id}', 'AdController@index')->name('ad');
+
+Route::get('/ad/delete/{id}', 'DeleteAnAdController@deleteAnAd');
+
+Route::get('/ad/edit/{id}', 'EditAnAdController@index')->name('editAnAd');
+Route::post('/ad/{id}', 'EditAnAdController@edit')->name('edit');
