@@ -24,7 +24,7 @@
         <div class="mt-4">
             @forelse($ads as $ad)
             <div>
-                <h3>{{ $ad['title'] }}</h3>
+                <h3> <a href="/ad/{{ $ad['id'] }}"> {{ $ad['title'] }} </a></h3>
                 <div>
                     <div class="h-100">
                         <img class="newest-ads__img" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
