@@ -24,7 +24,13 @@
         <div class="mt-4">
             @forelse($ads as $ad)
             <div>
-                <h3> <a href="/ad/{{ $ad['id'] }}"> {{ $ad['title'] }} </a></h3>
+                <div class="d-flex justify-content-between">
+                    <h3> <a href="/ad/{{ $ad['id'] }}"> {{ $ad['title'] }} </a></h3>
+                    <div>
+                        <a class="btn btn-success" href="/ad/edit/{{ $ad['id'] }}">Edit an ad</a>
+                        <a class="btn btn-danger ml-2" href="/ad/delete/{{ $ad['id'] }}">Delete an ad</a>
+                    </div>
+                </div>
                 <div>
                     <div class="h-100">
                         <img class="newest-ads__img" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
