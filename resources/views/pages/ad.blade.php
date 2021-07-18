@@ -10,10 +10,10 @@
 
     <div class="fs-2 w-50 d-flex justify-content-center align-items-center">
         <div>
-            <p> Author: {{$ad->user['name']}} </p>
-            <p> Phone: </p>
+            <p> Author: {{ $ad->user['name'] }} </p>
+            <p> Phone number: {{ $ad->user['phone_number'] }}</p>
             <p>
-                Category: <a href="/category/{{ $ad->category['title'] }}"> {{$ad->category['title']}} </a> 
+                Category: <a href="/category/{{ $ad->category['title'] }}"> {{ $ad->category['title'] }} </a> 
             </p>
             <p> Price: {{ $ad['price'] }} RUB </p>
         </div>
