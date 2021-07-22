@@ -26,12 +26,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@getAdsByUser')->name('home');
 
 
-Route::get('/ad/create', 'CreateANewAdController@index')->name('create');
-Route::post('/home', 'CreateANewAdController@store')->name('store');
+Route::get('/ad/create', 'AdController@get_create_view')->name('create');
+Route::post('/home', 'AdController@create_ad')->name('create_ad');
 
 Route::get('/ad/{id}', 'AdController@index')->name('ad');
 
-Route::get('/ad/delete/{id}', 'DeleteAnAdController@deleteAnAd');
+Route::get('/ad/delete/{id}', 'AdController@delete_ad');
 
-Route::get('/ad/edit/{id}', 'EditAnAdController@index')->name('editAnAd');
-Route::post('/ad/{id}', 'EditAnAdController@edit')->name('edit');
+Route::get('/ad/edit/{id}', 'AdController@get_edit_view')->name('edit');
+Route::post('/ad/{id}', 'AdController@edit_ad')->name('edit_ad');
