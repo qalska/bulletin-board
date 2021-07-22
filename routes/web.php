@@ -19,7 +19,7 @@ use App\Http\Controllers\EditAnAdController;
 
 Route::get('/', 'MainPageController@index')->name('mainpage');
 Route::get('/search', 'MainPageController@search')->name('search');
-Route::get('/category/{title}', 'MainPageController@getAdsByCategory')->name('getAdsByCategory');
+Route::get('/category/{title}', 'MainPageController@get_ads_by_category')->name('get_ads_by_category');
 
 Auth::routes();
 

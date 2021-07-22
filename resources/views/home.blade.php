@@ -33,7 +33,7 @@
                 </div>
                 <div>
                     <div class="h-100">
-                        <img class="newest-ads__img" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
+                        <img class="newest-ads__img" src="{{ asset($ad['image']) }}" alt="{{ $ad['image'] }}">
                         <div class="newest-ads__text h-100 fs-6 d-inline-block mx-3">
                             <p>Author: {{$ad->user['name']}} </p>
                             <p>

@@ -5,7 +5,7 @@
 <div class="d-flex justify-content-between ml-5">
     <div class="w-50">
         <h2> {{ $ad['title'] }} </h2>
-        <img class="ad__img w-100" src="/img/{{ $ad['image'] }}" alt="{{ $ad['image'] }}">
+        <img class="ad__img w-100" src="{{ asset($ad['image']) }}" alt="{{ $ad['image'] }}">
     </div>
 
     <div class="fs-2 w-50 d-flex justify-content-center align-items-center">

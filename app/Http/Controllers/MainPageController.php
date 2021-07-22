@@ -38,7 +38,7 @@ class MainPageController extends Controller
         ]);
     }
 
-    public function getAdsByCategory($title) {
+    public function get_ads_by_category($title) {
         $category = Category::where('title', $title)->first();
         $categories = Category::all();
 

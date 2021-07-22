@@ -28,7 +28,7 @@ class Ad extends Model
             $url = Storage::url($path);
             $ad->image = $url;
         } else {
-            $ad->image = 'nophoto.jpg';
+            $ad->image = '/storage/nophoto.jpg';
         }
 
         $ad->save();
